@@ -1,0 +1,42 @@
+@model IEnumerable<Terminapp.Models.Schedule>
+
+@{
+ViewData["Title"] = "Terminlister";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Startdato</th>
+        <th>Sluttdato</th>
+        <th>Status</th>
+        <th>Kommentarer</th>
+        <th>Ferieforespørsel</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var schedule in Model)
+    {
+    <tr>
+        <td>@schedule.StartDate.ToShortDateString()</td>
+        <td>@schedule.EndDate.ToShortDateString()</td>
+        <td>@schedule.Status</td>
+        <td>@schedule.Comments</td>
+        <td>
+            <ul>
+                @foreach (var entry in schedule.Entries)
+                {
+                <li>
+                    Ansatt ID: @entry.EmployeeId - Dato: @entry.Date.ToShortDateString()
+                </li>
+                }
+            </ul>
+        </td>
+    </tr>
+    }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary">Generer ny terminliste</a>

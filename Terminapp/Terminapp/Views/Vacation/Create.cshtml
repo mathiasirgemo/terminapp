@@ -1,0 +1,34 @@
+@page
+@model Terminapp.Views.Vacation.Create
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferieforespørsel</title>
+    <link rel="stylesheet" href="css/Vacation.css"> 
+</head>
+<body>
+<div class="container">
+    <h1>Send inn Ferieforespørsel</h1>
+    <form method="post" action="/VacationRequest/Create" class="vacation-form">
+        <div class="form-group">
+            <label for="startDate">Startdato:</label>
+            <input type="date" id="startDate" name="StartDate" required />
+        </div>
+            
+        <div class="form-group">
+            <label for="endDate">Sluttdato:</label>
+            <input type="date" id="endDate" name="EndDate" required />
+        </div>
+            
+        <button type="submit" class="submit-btn">Send inn ferieforespørsel</button>
+    </form>
+</div>
+</body>
+</html>

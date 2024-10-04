@@ -1,0 +1,29 @@
+@model IEnumerable<Terminapp.Models.Employee>
+
+<h2>Employee List</h2>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Navn</th>
+        <th>Epost</th>
+        <th>Stillingsprosent</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>@item.EmployeeName</td>
+        <td>@item.EmployeeEmail</td>
+        <td>@item.Employment</td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.EmployeeId">Rediger</a> |
+            <a asp-action="Details" asp-route-id="@item.EmployeeId">Detaljer</a> |
+            <a asp-action="Delete" asp-route-id="@item.EmployeeId">Slett</a>
+        </td>
+    </tr>
+    }
+    </tbody>
+</table>
+<a asp-action="Create">Opprett ansatt</a>

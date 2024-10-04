@@ -1,0 +1,20 @@
+@model Terminapp.Models.Employee
+
+<h2>Employee Details</h2>
+
+<div>
+    <h4>Employee</h4>
+    <div>
+        <dl class="dl-horizontal">
+            <dt>Name</dt>
+            <dd>@Model.EmployeeName</dd>
+            <dt>Email</dt>
+            <dd>@Model.EmployeeEmail</dd>
+            <dt>Employment</dt>
+            <dd>@Model.Employment</dd>
+        </dl>
+    </div>
+</div>
+
+<a asp-action="Edit" asp-route-id="@Model.EmployeeId">Edit</a> |
+<a asp-action="Index">Back to List</a>

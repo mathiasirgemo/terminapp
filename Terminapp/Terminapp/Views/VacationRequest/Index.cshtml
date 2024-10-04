@@ -1,0 +1,45 @@
+@model IEnumerable<Terminapp.Models.VacationRequest>
+
+@{
+    ViewData["Title"] = "Liste over ferieforespørsler";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Ansatt</th>
+        <th>Startdato</th>
+        <th>Sluttdato</th>
+        <th>Status</th>
+        <th>Kommentar</th>
+        <th>Handlinger</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var request in Model)
+    {
+        <tr>
+            <td>@request.Employee.EmployeeName</td>
+            <td>@request.StartDate.ToShortDateString()</td>
+            <td>@request.EndDate.ToShortDateString()</td>
+            <td>@request.Status</td>
+            <td>@request.Comment</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@request.VacationId" class="btn btn-primary">Rediger</a>
+                <a asp-action="Details" asp-route-id="@request.VacationId" class="btn btn-info">Detaljer</a>
+                <form asp-action="Approve" asp-route-id="@request.VacationId" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-success">Godkjenn</button>
+                </form>
+                <form asp-action="Reject" asp-route-id="@request.VacationId" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-danger">Avslå</button>
+                </form>
+                <a asp-action="Delete" asp-route-id="@request.VacationId" class="btn btn-warning">Slett</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary">Legg til ny forespørsel</a>

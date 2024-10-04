@@ -1,0 +1,43 @@
+@model Terminapp.Models.VacationRequest
+
+@{
+ViewData["Title"] = "Rediger ferieforespørsel";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="VacationId" />
+
+    <div class="form-group">
+        <label asp-for="EmployeeId" class="control-label">Ansatt</label>
+        <select asp-for="EmployeeId" asp-items="ViewBag.EmployeeId" class="form-control" disabled></select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="StartDate" class="control-label">Startdato</label>
+        <input asp-for="StartDate" class="form-control" type="date" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="EndDate" class="control-label">Sluttdato</label>
+        <input asp-for="EndDate" class="form-control" type="date" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Status" class="control-label">Status</label>
+        <select asp-for="Status" class="form-control">
+            <option value="Pending">Pending</option>
+            <option value="Approved">Godkjent</option>
+            <option value="Rejected">Avslått</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Comment" class="control-label">Kommentar</label>
+        <textarea asp-for="Comment" class="form-control"></textarea>
+    </div>
+
+    <input type="submit" value="Lagre endringer" class="btn btn-primary" />
+    <a asp-action="Index" class="btn btn-secondary">Avbryt</a>
+</form>
